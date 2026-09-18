@@ -1,0 +1,8 @@
+.DS_Store
+.agents/
+.claude/
+.codex/
+.impeccable/
+skills-lock.json
+temporary screenshots/
+node_modules/
