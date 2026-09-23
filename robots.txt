@@ -1,0 +1,5 @@
+# The Mezzanine
+User-agent: *
+Allow: /
+
+Sitemap: https://www.themezzanine.in/sitemap.xml

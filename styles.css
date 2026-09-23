@@ -516,7 +516,7 @@ h3.display { font-size: clamp(26px, 3vw, 40px); }
   grid-template-columns: 1fr;
 }
 @media (min-width: 768px) {
-  .footer .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+  .footer .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
 }
 .footer .divider { border-top: 1px solid color-mix(in srgb, var(--paper) 12%, transparent); }
 

@@ -16,7 +16,7 @@
         sessionStorage.setItem("mezzanine-splash-seen", "1");
       } catch (e) {}
       document.body.style.overflow = "hidden";
-      var hideDelay = reduceMotionSplash ? 250 : 1100;
+      var hideDelay = reduceMotionSplash ? 200 : 400;
       setTimeout(function () {
         splash.classList.add("is-hiding");
         document.body.style.overflow = "";
