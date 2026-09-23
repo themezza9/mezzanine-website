@@ -142,10 +142,10 @@
     marqueeIO.observe(marqueeTrack);
   }
 
-  // Contact form -> Netlify Forms.
-  // Netlify parses the static markup in contact.html at deploy time; we post
-  // the same url-encoded payload over fetch so the page can keep its inline
-  // success state instead of bouncing to Netlify's default thank-you page.
+  // Contact form -> Web3Forms.
+  // The site is static on Vercel, so submissions go to Web3Forms' API, which
+  // emails them on. We post over fetch so the page can keep its inline success
+  // state instead of bouncing to Web3Forms' default thank-you page.
   var form = document.querySelector("#contact-form");
   if (form) {
     var errorBox = document.querySelector("#form-error");
@@ -191,15 +191,17 @@
         submitBtn.textContent = "Sending\u2026";
       }
 
-      var body = new URLSearchParams(new FormData(form)).toString();
-
-      fetch(form.getAttribute("action") || window.location.pathname, {
+      fetch(form.action, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body
+        headers: { Accept: "application/json" },
+        body: new FormData(form)
       })
         .then(function (res) {
-          if (!res.ok) throw new Error("Netlify form responded " + res.status);
+          return res.json().then(function (data) {
+            if (!res.ok || !data.success) throw new Error(data.message || "Web3Forms responded " + res.status);
+          });
+        })
+        .then(function () {
           var success = document.querySelector("#form-success");
           form.hidden = true;
           if (success) {

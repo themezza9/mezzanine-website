@@ -176,19 +176,19 @@
               id="contact-form"
               name="contact"
               method="POST"
-              action="/contact.html"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
+              action="https://api.web3forms.com/submit"
               novalidate>
 
-              <!-- Netlify requires this hidden field so the POST can be matched
-                   back to the form it parsed at deploy time. -->
-              <input type="hidden" name="form-name" value="contact">
+              <!-- Web3Forms routes submissions to the inbox tied to this key.
+                   The key is public by design; it can only send to that inbox. -->
+              <input type="hidden" name="access_key" value="84f1ce9f-fbe4-4eeb-aef4-252b78426a07">
+              <input type="hidden" name="subject" value="New enquiry from themezzanine.in">
+              <input type="hidden" name="from_name" value="The Mezzanine website">
 
-              <!-- Honeypot: real people never see it, bots fill it in and the
-                   submission is silently discarded by Netlify. -->
+              <!-- Honeypot: real people never see it, bots tick it and the
+                   submission is silently discarded by Web3Forms. -->
               <p class="hp-field" aria-hidden="true">
-                <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                <label>Don't fill this out if you're human: <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
               </p>
 
               <div style="display:flex; flex-direction:column; gap: var(--space-3);">
